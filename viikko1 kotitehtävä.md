@@ -34,3 +34,5 @@ Tämän jälkeen menin vielä temppiin katsomaan toimiko moduuli<br>
 less /tmp/testiModuuli<br>
 <br>
 Moduuli näytti toimineen oikein, koska tiedosto aukesi oikealla sisällöllä<br>
+
+Tehty ohjeen http://terokarvinen.com/2013/hello-puppet-revisited-%E2%80%93-on-ubuntu-12-04-lts avulla
