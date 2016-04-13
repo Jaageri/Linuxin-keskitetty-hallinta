@@ -58,9 +58,11 @@ puppet cert sign ws1.tielab.haaga-helia.fi
 puppet cert sign ws2.tielab.haaga-helia.fi
 
 https://docs.puppet.com/puppet/4.3/reference/quick_start_helloworld.html
-tein ohjeen mukaan ja lopetin uuten sertifikaatti ongelmaan
+tein ohjeen mukaan ja lopetin uuten sertifikaatti ongelmaan ensi kerralla avaimet uusiksi.
 https://docs.puppet.com/puppet/4.4/reference/ssl_regenerate_certificates.html
 
+lisää hosts tiedostoihin koko domain nimet ws1.tielab.haaga-helia.fi ws2.tielab.haaga-helia.fi srv.tielab.haaga-helia.fi
 
+less /etc/motd
 
 
