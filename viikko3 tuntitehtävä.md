@@ -111,7 +111,7 @@ Info: Applying configuration version '1461138443'
 Notice: /Stage[main]/Main/Node[ws2]/User[jaakko]/ensure: created  
 Notice: Applied catalog in 0.27 seconds  
 
-Tein saman ws1:sella  
+Tein saman ws1:sella ja openssh-server asentui
 Info: Using configured environment 'production'  
 Info: Retrieving pluginfacts  
 Info: Retrieving plugin  
