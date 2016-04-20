@@ -122,3 +122,24 @@ Notice: Applied catalog in 10.62 seconds
 
 
 
+#oman tyypin luonti
+Luodaan hakemistot  
+mkdir -p /etc/puppetlabs/code/environments/production/modules/testi/manifests  
+mkdir -p /etc/puppetlabs/code/environments/production/modules/testi/templates  
+Tehdään manifests-hakemistoon init.pp ja laitetaan sinne  
+class testi {}  
+
+tehdään tyyppi.pp ja laitetaan sinne:   
+define testi:tyyppi {  
+    file {"/etc/testi":  
+    content => 'toimiiks tää',  
+    owner => 'root',  
+    mode => '0664',  
+    }}  
+    
+site.pp:  
+
+node ws1{  
+    testi::tyyppi{}}  
+  
+
