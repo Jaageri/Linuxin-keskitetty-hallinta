@@ -74,7 +74,51 @@ ln -s /etc/init.d/puppetserver 99puppetserver
 
 manuaalisesti sudo puppet resource service puppetserver ensure=running
 
-https://docs.puppet.com/puppet/4.3/reference/quick_start_helloworld.html
-https://docs.puppet.com/puppet/4.4/reference/ssl_regenerate_certificates.html
+https://docs.puppet.com/puppet/4.3/reference/quick_start_helloworld.html  
+https://docs.puppet.com/puppet/4.4/reference/ssl_regenerate_certificates.html  
+
+#paketin asennus toiselle työasemalle puppetin avulla  
+
+käyttäjän määrittely serverille: lisätään tiedostoon /etc/puppetlabs/code/environments/production/manifests/site.pp 
+määritellään siis mitä yksittäinen node hakee puppetilla, työaseman nimen perusteella  
+
+
+node ws1 {  
+        package { 'openssh-server':
+          ensure => 'installed',
+          }
+    }
+node ws2 {
+        user { 'jaakko':
+        name => 'jaakko',
+        ensure => 'present',
+        home => '/home/jaakko',
+        managehome => 'yes'.
+        password => '"pitkä rimpsu merkkejä"'
+
+
+loin myös valmiiksi serverille käyttäjän 'jaakko' saadakseni salasanan kryptatyssa muodossa site.pp tiedostoon.Tiedot siirsin site.pp tiedostoon tällä tavalla.  
+
+grep jaakko /etc/shadow >> /etc/puppetlabs/code/environments/produciton/manifests/site.pp  
+Itse salasanaosa tuosta on $6 merkeillä alkava kaksoispisteiden välissä oleva osa, jonka laitoin passwd kohtaan  
+
+tämän jälkeen ajoin puppet agent -t ws2:sella ja käyttäjä luotiin    
+Info: Using configured environment 'production'  
+Info: Retrieving pluginfacts  
+Info: Retrieving plugin  
+Info: Caching catalog for ws2.tielab.haaga-helia.fi  
+Info: Applying configuration version '1461138443'  
+Notice: /Stage[main]/Main/Node[ws2]/User[jaakko]/ensure: created  
+Notice: Applied catalog in 0.27 seconds  
+
+Tein saman ws1:sella  
+Info: Using configured environment 'production'  
+Info: Retrieving pluginfacts  
+Info: Retrieving plugin  
+Info: Caching catalog for ws1.tielab.haaga-helia.fi  
+Info: Applying configuration version '1461138466'  
+Notice: /Stage[main]/Main/Node[ws1]/Package[openssh-server]/ensure: created  
+Notice: Applied catalog in 10.62 seconds  
+
 
 
