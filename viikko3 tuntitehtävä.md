@@ -83,18 +83,18 @@ käyttäjän määrittely serverille: lisätään tiedostoon /etc/puppetlabs/cod
 määritellään siis mitä yksittäinen node hakee puppetilla, työaseman nimen perusteella  
 
 
-node ws1 {  
-        package { 'openssh-server':
-          ensure => 'installed',
-          }
-    }
-node ws2 {
-        user { 'jaakko':
-        name => 'jaakko',
-        ensure => 'present',
-        home => '/home/jaakko',
-        managehome => 'yes'.
-        password => '"pitkä rimpsu merkkejä"'
+node ws1 {   
+        package { 'openssh-server':  
+          ensure => 'installed',  
+          }  
+    }  
+node ws2 {  
+        user { 'jaakko':  
+        name => 'jaakko',  
+        ensure => 'present',  
+        home => '/home/jaakko',  
+        managehome => 'yes'.  
+        password => '"pitkä rimpsu merkkejä"'  
 
 
 loin myös valmiiksi serverille käyttäjän 'jaakko' saadakseni salasanan kryptatyssa muodossa site.pp tiedostoon.Tiedot siirsin site.pp tiedostoon tällä tavalla.  
